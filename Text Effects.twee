@@ -1,0 +1,73 @@
+@@.shadow;This text should have a shadow@@
+@@.emboss;This text should be embossed@@
+@@.blur;This text should be blurred@@
+@@.blurrier;This text should be blurrier@@
+@@.smear;This text should be smeared@@
+@@.mirror;This text should be mirrored@@
+@@.upside-down;This text should be upside-down@@
+@@.fade-in-out;This text should fade in and out@@
+@@.rumble;This text should be rumbling@@
+@@.shudder;This text should be shuddering@@
+@@.pulse;This text should pulse once@@
+@@.secret;This is a secret@@
+
+<div class="notebox">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</div>
+
+<div class="warningbox">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</div>
+
+<div class="itemadd">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</div>
+
+<div class="itemlost">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</div>
+
+<<addToInv "Credits and Resources">> You've picked up an item!
+
+<<audio ":playing" fadeout>><<audio "town-bg" volume 0 fadeto 0.50 loop>><<set $music to "town">>
+
+<<link 'You picked up Test Item'>>
+    <<notify>>This is a notification!<</notify>>
+	<<addToInv "Test Item">>
+<</link>>
+
+<<link 'You picked up Test Item'>>
+    <<notify 3s>>This is a notification!<</notify>>
+	<<audio "notification-sfx" play>>
+<</link>>
+
+/% a simple, two-second-long notification with no added classes %/
+<<notify>>Achievement unlocked!<</notify>>
+
+/% a one-second-long notification with the 'inventory-update' class %/
+<<notify 1s 'inventory-update'>>Found gold.<</notify>>
+
+/% a lengthy five-second-long notification %/
+<<notify 5s>>$xp experience points earned.<</notify>>
+
+<<notify>><<audio "notification-sfx" play>>Achievement: What's going on?<</notify>>
+
+
+Your Starting City-State:
+<<listbox "$currentzone">>
+	<<option "">>
+	<<option "Gridania">>
+	<<option "Ul'dah">>
+	<<option "Limsa Lominsa">>
+	<<option "Ishgard">>
+	<<option "Kugane">>
+	<<option "The Crystarium" Crystarium>>
+	<<option "Eulmore">>
+<</listbox>>
+
+<label><<radiobutton "$pronouns" "m">> He/Him</label>
+<label><<radiobutton "$pronouns" "f">> She/Her</label>
+<label><<radiobutton "$pronouns" "n">> They/Them</label>
+
+<<if $pronouns is "m">><<SetPronouns "m">><</if>>
+<<if $pronouns is "f">><<SetPronouns "f">><</if>>
+<<if $pronouns is "n">><<SetPronouns>><</if>>
+
+<<audio ":playing" fadeout>><<audio "hildebrand-bg" volume 0 fadeto 0.30 loop>><<set $music to "hildebrand">>Hildebrand shows up!
+
+<<link [[]]>><<set $zonetime to "day">><</link>>
+
+<div class="chapterHead"><h1>Credits and Resources</h1><hr></div>
+<<return>>
