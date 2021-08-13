@@ -1,0 +1,121 @@
+::Start [DisableKeyLinks Prelude]
+
+<div class="center"><div class="chapterHead"><h2>Darthsuki Presents:</h2></div><hr>[img[https://i.imgur.com/OdpxPIs.png]]</div><hr><div class="center"><span class="button">[img[Start|https://i.imgur.com/ZNUWzFo.png][Settings Start]]</span>
+<span class="button">[img[About|https://i.imgur.com/CQckmJO.png][About]]</span>
+<span class="button">[img[Credits|https://i.imgur.com/DldRrOI.png][Credits]]</span></div>
+
+::Settings Start [DisableKeyLinks Prelude]
+<<audio ":playing" fadeout>><<audio "prelude-bg" volume 0 fadeto 0.30 loop>><<set $music to "prelude">>
+<div class="center"><h1>Personal Settings</h1>Your First Name:
+<<textbox "$firstname" $firstname>>
+
+Your Last Name:
+<<textbox "$lastname" $lastname>>
+
+Your Race:
+<<listbox "$race">>
+    <<option "Hyur">>
+	<<option "Miqo'te" "Miqo'te" `$race == "Miqo'te" ? "selected" : ""`>>
+  <<option "Lalafell" "Lalafell" `$race == "Lalafell" ? "selected" : ""`>>
+  <<option "Roegadyn" "Roegadyn" `$race == "Roegadyn" ? "selected" : ""`>>
+  <<option "Au Ra" "Au Ra" `$race == "Au Ra" ? "selected" : ""`>>
+  <<option "Elezen" "Elezen" `$race == "Elezen" ? "selected" : ""`>>
+  <<option "Viera" "Viera" `$race == "Viera" ? "selected" : ""`>>
+  <<option "Hrothgar" "Hrothgar" `$race == "Hrothgar" ? "selected" : ""`>>
+<</listbox>>
+
+Your Primary Combat Job:
+<<listbox "$job">>
+    <<option "None">>
+	<<option "White Mage" "White Mage" `$job == "White Mage" ? "selected" : ""`>>
+	<<option "Scholar" "Scholar" `$job == "Scholar" ? "selected" : ""`>>
+	<<option "Astrologian" "Astrologian" `$job == "Astrologian" ? "selected" : ""`>>
+	<<option "Paladin" "Paladin" `$job == "Paladin" ? "selected" : ""`>>
+	<<option "Warrior" "Warrior" `$job == "Warrior" ? "selected" : ""`>>
+	<<option "Dark Knight" "Dark Knight" `$job == "Dark Knight" ? "selected" : ""`>>
+	<<option "Gunbreaker" "Gunbreaker" `$job == "Gunbreaker" ? "selected" : ""`>>
+	<<option "Monk" "Monk" `$job == "Monk" ? "selected" : ""`>>
+	<<option "Dragoon" "Dragoon" `$job == "Dragoon" ? "selected" : ""`>>
+	<<option "Ninja" "Ninja" `$job == "Ninja" ? "selected" : ""`>>
+	<<option "Samurai" "Samurai" `$job == "Samurai" ? "selected" : ""`>>
+	<<option "Bard" "Bard" `$job == "Bard" ? "selected" : ""`>>
+	<<option "Machinist" "Machinist" `$job == "Machinist" ? "selected" : ""`>>
+	<<option "Black Mage" "Black Mage" `$job == "Black Mage" ? "selected" : ""`>>
+	<<option "Summoner" "Summoner" `$job == "Summoner" ? "selected" : ""`>>
+	<<option "Red Mage" "Red Mage" `$job == "Red Mage" ? "selected" : ""`>>
+	<<option "Blue Mage" "Blue Mage" `$job == "Blue Mage" ? "selected" : ""`>>
+<</listbox>>
+
+Your Primary Crafting Job:
+<<listbox "$craft">>
+    <<option "None">>
+	<<option "Alchemist" "Alchemist" `$craft == "Alchemist" ? "selected" : ""`>>
+	<<option "Armorer" "Armorer" `$craft == "Armorer" ? "selected" : ""`>>
+	<<option "Blacksmith" "Blacksmith" `$craft == "Blacksmith" ? "selected" : ""`>>
+	<<option "Carpenter" "Carpenter" `$craft == "Carpenter" ? "selected" : ""`>>
+	<<option "Culinarian" "Culinarian" `$craft == "Culinarian" ? "selected" : ""`>>
+	<<option "Goldsmith" "Goldsmith" `$craft == "Goldsmith" ? "selected" : ""`>>
+	<<option "Leatherworker" "Leatherworker" `$craft == "Leatherworker" ? "selected" : ""`>>
+	<<option "Weaver" "Weaver" `$craft == "Weaver" ? "selected" : ""`>>
+<</listbox>>
+
+Your Primary Gathering Job:
+<<listbox "$gather">>
+    <<option "None">>
+	<<option "Botanist" "Botanist" `$gather == "Botanist" ? "selected" : ""`>>
+	<<option "Miner" "Miner" `$gather == "Miner" ? "selected" : ""`>>
+	<<option "Fisher" "Fisher" `$gather == "Fisher" ? "selected" : ""`>>
+<</listbox>>
+
+Home Region:
+<<listbox "$wherearewe">>
+	<<option "None">>
+	<<option "Gridania">>
+	<<option "Ul'dah">>
+	<<option "Limsa Lominsa">>
+	<<option "Ishgard">>
+	<<option "Kugane">>
+<</listbox>></div>
+<div class="center"><h1>Pronouns</h1><<button "She/Her">><<SetPronouns "f">><</button>>
+
+<<button "He/Him">><<SetPronouns "m">><</button>>
+
+<<button "They/Them">><<SetPronouns>><</button>>
+
+
+[[Confirm Information]]</div>
+
+::Confirm Information [Prelude]
+Below is an example description of you with the information you gave in the last passage:
+
+"The person playing this twine game is $firstname $lastname. $Theyre checking to make sure that $their settings are correct for maximum immersion.<<if $job isnot "None">> I also hear that $theyre a $role, specifically a $job.<</if>><<if $craft isnot "None" or $gather isnot "None">> Everyone has hobbies, and I hear that $theyre also a <<if $craft isnot "None">>$craft<</if>><<if $craft isnot "None" and $gather isnot "None">> and <</if>><<if $gather isnot "None">>$gather<</if>>.<</if>>"
+
+Is this information correct?
+<div class="center"><<link [[Yes.|Begin Game]]>><<audio ":playing" fadeout>><<if $wherearewe is "Gridania">><<set $currentzone to "Gridania">><<elseif $wherearewe is "Limsa Lominsa">><<set $currentzone to "Limsa Lominsa">><<elseif $wherearewe is "Ul'dah">><<set $currentzone to "Ul'dah">><<elseif $wherearewe is "Ishgard">><<set $currentzone to "Ishgard">><<elseif $wherearewe is "Kugane">><<set $currentzone to "Kugane">><</if>><<set $zonetime to "night">><<set $music to "">><</link>>| [[No.|Settings Start]]</div>
+
+::Credits [menu DisableKeyLinks Prelude]
+<div class="center"><h1>Credits and Useful Resources</h1><hr>
+
+<a href="https://github.com/ChapelR/volume-slider-for-sugarcube2">Volume Slider for Sugarcube by ChapelR</a>
+
+<a href="https://github.com/ChapelR/custom-macros-for-sugarcube-2/blob/master/docs/notify-macro.md">Notify Macro by ChapelR</a>
+
+<a href="https://qjzhvmqlzvoo5lqnrvuhmg-on.drv.tw/UInv/Sample_Code.html#Keyboard%20Link%20Navigation">Keyboard Link Navigation by HiEv</a>
+
+<a href="https://qjzhvmqlzvoo5lqnrvuhmg-on.drv.tw/UInv/Sample_Code.html#Font%20Size%20Buttons">Font Size Change Buttons by HiEv</a>
+
+<a href="https://twinery.org/wiki/twine2:add_an_inventory_system">Simple Inventory System originally by F2Andy</a>
+
+<a href="https://qjzhvmqlzvoo5lqnrvuhmg-on.drv.tw/UInv/Sample_Code.html#SetPronouns%20Widget">Pronoun Selection Widget by HiEv</a>
+
+<a href="https://twinery.org/forum/discussion/8227/get-audio-to-play-conditionally-upon-loading-a-game-sugarcube-2">How to make audio play conditionally upon loading a game, via Twine Forums</a>
+
+<<return>></div>
+
+::About [menu DisableKeyLinks Prelude]
+<div class="center"><img src="https://static.tumblr.com/b51e7eea606fd1b45f4d82950330c455/zdgncq1/UKEpuv6os/tumblr_static_4bho38oaqxgk4wk00gwsokgk0.png" width="50%"></div>
+My name is <a href="https://darthsuki.tumblr.com/">Daniel</a>, and I’m a 26-year-old trans man just out here trying to live a happy and worthwhile life. My philosophy? Make the world a better place each and every day, no matter how small the improvement.
+
+This game has been written and created to be a unique way to interact with reader-insert fanfiction. If you're interested in reading the (non-twine) content that I normally write, you can also find me on <a href="https://archiveofourown.org/users/DarthSuki">AO3</a> or find fandom-specific content from <a href="https://docs.google.com/spreadsheets/d/1KpAXG_9rI-CijzyJDWFzLidPnZ7KhHivN9OqilESdb0/edit?usp=sharing">my list of writing blogs.</a>
+
+<div class="center"><<return>></div>

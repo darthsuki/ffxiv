@@ -1,0 +1,673 @@
+::StoryTitle
+Final Fantasy XIV: Seven Minutes in Heaven
+
+:: StoryData
+{
+        "ifid": "145D7C71-76E9-4DA1-A414-93864199530D"
+}
+
+::StoryInit [StoryInit]
+<<initInv>><<SetPronouns>>
+<<set $race to "Hyur">><<set $firstname to "">><<set $lastname to "">><<set $nickname to "">><<set $age to "">><<set $currentzone to "None">><<set $music to "None">><<set $zonetime to "day">><<set $job to "None">><<set $craft to "None">><<set $gather to "None">><<set $wherearewe to "None">>
+<<cacheaudio "gridania-bg" "media/audio/Gridania_Day.mp3">>
+<<cacheaudio "gridania-bg-night" "media/audio/Gridania_Night.mp3">>
+<<cacheaudio "blackshroud-bg" "media/audio/Black_Shroud.mp3">>
+
+<<cacheaudio "uldah-bg" "media/audio/Uldah_Day.mp3">>
+<<cacheaudio "uldah-bg-night" "media/audio/Uldah_Night.mp3">>
+<<cacheaudio "thanalan-bg" "media/audio/Thanalan.mp3">>
+
+<<cacheaudio "limsa-bg" "media/audio/Limsa_Day.mp3">>
+<<cacheaudio "limsa-bg-night" "media/audio/Limsa_Night.mp3">>
+<<cacheaudio "lanoscea-bg" "media/audio/La_Noscea.mp3">>
+
+<<cacheaudio "ishgard-bg" "media/audio/Ishgard_Day.mp3">>
+<<cacheaudio "ishgard-bg-night" "media/audio/Ishgard_Night.mp3">>
+<<cacheaudio "coerthas-bg" "media/audio/Coerthas_West.mp3">>
+<<cacheaudio "forelands-bg" "media/audio/Dravanian_Foothills.mp3">>
+<<cacheaudio "seaofclouds-bg" "media/audio/Sea_of_Clouds.mp3">>
+<<cacheaudio "churningmists-bg" "media/audio/Churning_Mists.mp3">>
+<<cacheaudio "hinterlands-bg" "media/audio/Dravanian_Hinterlands.mp3">>
+<<cacheaudio "azyslla-bg" "media/audio/Azys_Lla.mp3">>
+
+<<cacheaudio "kugane-bg" "media/audio/Kugane_Day.mp3">>
+<<cacheaudio "kugane-bg-night" "media/audio/Kugane_Night.mp3">>
+<<cacheaudio "yanxia-bg" "media/audio/Yanxia.mp3">>
+<<cacheaudio "rubysea-bg" "media/audio/Ruby_Sea.mp3">>
+<<cacheaudio "azimsteppe-bg" "media/audio/Azim_Steppe.mp3">>
+<<cacheaudio "peaks-bg" "media/audio/Peaks.mp3">>
+<<cacheaudio "fringes-bg" "media/audio/Fringes.mp3">>
+<<cacheaudio "lochs-bg" "media/audio/Lochs.mp3">>
+
+<<cacheaudio "crystarium-bg" "media/audio/Crystarium_Day.mp3">>
+<<cacheaudio "crystarium-bg-night" "media/audio/Crystarium_Night.mp3">>
+<<cacheaudio "ocular-bg" "media/audio/Ocular.mp3">>
+<<cacheaudio "lakeland-bg" "media/audio/Lakeland.mp3">>
+<<cacheaudio "amharaeng-bg" "media/audio/Amh_Araeng.mp3">>
+<<cacheaudio "ilmheg-bg" "media/audio/Il_Mheg.mp3">>
+<<cacheaudio "kholusia-bg" "media/audio/Kholusia.mp3">>
+<<cacheaudio "eulmore-bg" "media/audio/Eulmore.mp3">>
+<<cacheaudio "raktika-bg" "media/audio/Raktika_Greatwood.mp3">>
+<<cacheaudio "first-town-bg" "media/audio/Town.mp3">>
+<<cacheaudio "tempest-bg" "media/audio/Tempest.mp3">>
+<<cacheaudio "amaurot-bg" "media/audio/Amaurot.mp3">>
+
+<<cacheaudio "hildebrand-bg" "media/audio/Hildebrand_Theme.mp3">>
+<<cacheaudio "somethingfucky-bg" "media/audio/Something_Fucky.mp3">>
+<<cacheaudio "prelude-bg" "media/audio/Prelude.mp3">>
+
+<<cacheaudio "notification-sfx" "media/audio/Notification.mp3">>
+
+::Settings [menu]
+<div class="center"><h1>Personal Settings</h1>
+Your First Name:
+<<textbox "$firstname" $firstname>>
+
+Your Last Name:
+<<textbox "$lastname" $lastname>>
+
+Your Race:
+<<listbox "$race">>
+    <<option "Hyur">>
+	<<option "Miqo'te" "Miqo'te" `$race == "Miqo'te" ? "selected" : ""`>>
+  <<option "Lalafell" "Lalafell" `$race == "Lalafell" ? "selected" : ""`>>
+  <<option "Roegadyn" "Roegadyn" `$race == "Roegadyn" ? "selected" : ""`>>
+  <<option "Au Ra" "Au Ra" `$race == "Au Ra" ? "selected" : ""`>>
+  <<option "Elezen" "Elezen" `$race == "Elezen" ? "selected" : ""`>>
+  <<option "Viera" "Viera" `$race == "Viera" ? "selected" : ""`>>
+  <<option "Hrothgar" "Hrothgar" `$race == "Hrothgar" ? "selected" : ""`>>
+<</listbox>>
+
+Your Primary Combat Job:
+<<listbox "$job">>
+    <<option "None">>
+	<<option "White Mage" "White Mage" `$job == "White Mage" ? "selected" : ""`>>
+	<<option "Scholar" "Scholar" `$job == "Scholar" ? "selected" : ""`>>
+	<<option "Astrologian" "Astrologian" `$job == "Astrologian" ? "selected" : ""`>>
+	<<option "Paladin" "Paladin" `$job == "Paladin" ? "selected" : ""`>>
+	<<option "Warrior" "Warrior" `$job == "Warrior" ? "selected" : ""`>>
+	<<option "Dark Knight" "Dark Knight" `$job == "Dark Knight" ? "selected" : ""`>>
+	<<option "Gunbreaker" "Gunbreaker" `$job == "Gunbreaker" ? "selected" : ""`>>
+	<<option "Monk" "Monk" `$job == "Monk" ? "selected" : ""`>>
+	<<option "Dragoon" "Dragoon" `$job == "Dragoon" ? "selected" : ""`>>
+	<<option "Ninja" "Ninja" `$job == "Ninja" ? "selected" : ""`>>
+	<<option "Samurai" "Samurai" `$job == "Samurai" ? "selected" : ""`>>
+	<<option "Bard" "Bard" `$job == "Bard" ? "selected" : ""`>>
+	<<option "Machinist" "Machinist" `$job == "Machinist" ? "selected" : ""`>>
+	<<option "Black Mage" "Black Mage" `$job == "Black Mage" ? "selected" : ""`>>
+	<<option "Summoner" "Summoner" `$job == "Summoner" ? "selected" : ""`>>
+	<<option "Red Mage" "Red Mage" `$job == "Red Mage" ? "selected" : ""`>>
+	<<option "Blue Mage" "Blue Mage" `$job == "Blue Mage" ? "selected" : ""`>>
+<</listbox>>
+
+Your Primary Crafting Job:
+<<listbox "$craft">>
+    <<option "None">>
+	<<option "Alchemist" "Alchemist" `$craft == "Alchemist" ? "selected" : ""`>>
+	<<option "Armorer" "Armorer" `$craft == "Armorer" ? "selected" : ""`>>
+	<<option "Blacksmith" "Blacksmith" `$craft == "Blacksmith" ? "selected" : ""`>>
+	<<option "Carpenter" "Carpenter" `$craft == "Carpenter" ? "selected" : ""`>>
+	<<option "Culinarian" "Culinarian" `$craft == "Culinarian" ? "selected" : ""`>>
+	<<option "Goldsmith" "Goldsmith" `$craft == "Goldsmith" ? "selected" : ""`>>
+	<<option "Leatherworker" "Leatherworker" `$craft == "Leatherworker" ? "selected" : ""`>>
+	<<option "Weaver" "Weaver" `$craft == "Weaver" ? "selected" : ""`>>
+<</listbox>>
+
+Your Primary Gathering Job:
+<<listbox "$gather">>
+    <<option "None">>
+	<<option "Botanist" "Botanist" `$gather == "Botanist" ? "selected" : ""`>>
+	<<option "Miner" "Miner" `$gather == "Miner" ? "selected" : ""`>>
+	<<option "Fisher" "Fisher" `$gather == "Fisher" ? "selected" : ""`>>
+<</listbox>></div>
+
+<hr><div class="center"><h1>Pronouns</h1><<button "She/Her">><<SetPronouns "f">><</button>>
+
+<<button "He/Him">><<SetPronouns "m">><</button>>
+
+<<button "They/Them">><<SetPronouns>><</button>>
+
+<<return>></div>
+
+::Inventory [menu]
+<div class="center"><div class="inventory">
+<h2>Your Inventory</h2>
+<<if $inventory.length == 0>>You are not carrying anything.<<else>>You are carrying:
+<<invWithLinks>> <<endif>>
+</div>
+
+<<link "Return" $return>><</link>>
+
+::StoryMenu
+<a data-passage="Inventory"><i class="fas fa-archive"></i> Inventory</a>
+<a data-passage="Settings"><i class="fas fa-cogs"></i> Settings</a>
+
+::StoryBanner
+[img[https://i.imgur.com/OdpxPIs.png]]
+
+::AudioLoad
+<<masteraudio stop>>
+<<switch $music>>
+<<case "gridania">>
+	<<audio "gridania-bg" loop volume 0 fadeto 0.30>>
+<<case "gridania night">>
+	<<audio "gridania-bg-night" loop volume 0 fadeto 0.30>>
+<<case "black shroud">>
+	<<audio "blackshroud-bg" loop volume 0 fadeto 0.30>>
+<<case "prelude">>
+  	<<audio "prelude-bg" loop volume 0 fadeto 0.30>>
+
+<<case "uldah">>
+	<<audio "uldah-bg" loop volume 0 fadeto 0.30>>
+<<case "uldah night">>
+	<<audio "uldah-bg-night" loop volume 0 fadeto 0.30>>
+<<case "thanalan">>
+	<<audio "thanalan-bg" loop volume 0 fadeto 0.30>>
+
+<<case "limsa">>
+	<<audio "limsa-bg" loop volume 0 fadeto 0.30>>
+<<case "limsa night">>
+	<<audio "limsa-bg-night" loop volume 0 fadeto 0.30>>
+<<case "la noscea">>
+	<<audio "lanoscea-bg" loop volume 0 fadeto 0.30>>
+
+<<case "ishgard">>
+	<<audio "ishgard-bg" loop volume 0 fadeto 0.30>>
+<<case "ishgard night">>
+	<<audio "ishgard-bg-night" loop volume 0 fadeto 0.30>>
+<<case "forelands">>
+	<<audio "forelands-bg" loop volume 0 fadeto 0.30>>
+<<case "hinterlands">>
+	<<audio "hinterlands-bg" loop volume 0 fadeto 0.30>>
+<<case "sea of clouds">>
+	<<audio "seaofclouds-bg" loop volume 0 fadeto 0.30>>
+<<case "azys lla">>
+	<<audio "azyslla-bg" loop volume 0 fadeto 0.30>>
+<<case "churning mists">>
+	<<audio "churningmists-bg" loop volume 0 fadeto 0.30>>
+<<case "coerthas">>
+	<<audio "coerthas-bg" loop volume 0 fadeto 0.30>>
+
+<<case "kugane">>
+	<<audio "kugane-bg" loop volume 0 fadeto 0.30>>
+<<case "kugane night">>
+	<<audio "kugane-bg-night" loop volume 0 fadeto 0.30>>
+<<case "azim steppe">>
+	<<audio "azimsteppe-bg" loop volume 0 fadeto 0.30>>
+<<case "yanxia">>
+	<<audio "yanxia-bg" loop volume 0 fadeto 0.30>>
+<<case "ruby sea">>
+	<<audio "rubysea-bg" loop volume 0 fadeto 0.30>>
+<<case "peaks">>
+	<<audio "peaks-bg" loop volume 0 fadeto 0.30>>
+<<case "fringes">>
+	<<audio "fringes-bg" loop volume 0 fadeto 0.30>>
+<<case "lochs">>
+	<<audio "lochs-bg" loop volume 0 fadeto 0.30>>
+
+<<case "crystarium">>
+	<<audio "crystarium-bg" loop volume 0 fadeto 0.30>>
+<<case "crystarium night">>
+	<<audio "crystarium-bg-night" loop volume 0 fadeto 0.30>>
+<<case "ocular">>
+	<<audio "ocular-bg" loop volume 0 fadeto 0.30>>
+<<case "lakeland">>
+	<<audio "lakeland-bg" loop volume 0 fadeto 0.30>>
+<<case "kholusia">>
+	<<audio "kholusia-bg" loop volume 0 fadeto 0.30>>
+<<case "eulmore">>
+	<<audio "eulmore-bg" loop volume 0 fadeto 0.30>>
+<<case "il mheg">>
+	<<audio "ilmheg-bg" loop volume 0 fadeto 0.30>>
+<<case "amh araeng">>
+	<<audio "amharaeng-bg" loop volume 0 fadeto 0.30>>
+<<case "raktika">>
+	<<audio "raktika-bg" loop volume 0 fadeto 0.30>>
+<<case "raktika town">>
+	<<audio "raktika-town-bg" loop volume 0 fadeto 0.30>>
+<<case "tempest">>
+	<<audio "tempest-bg" loop volume 0 fadeto 0.30>>
+<<case "amaurot">>
+	<<audio "amaurot-bg" loop volume 0 fadeto 0.30>>
+<<case "hildebrand">>
+	<<audio "hildebrand-bg" loop volume 0 fadeto 0.30>>
+<<case "somethings fucky">>
+	<<audio "somethingsfucky-bg" loop volume 0 fadeto 0.30>>
+<</switch>>
+
+::Pronouns Widget [widget]
+<<widget "SetPronouns">><<nobr>>
+/* Usage... (defaults to male) */
+/* for "they": <<SetPronouns>> */
+/* for "he":   <<SetPronouns "m">> */
+/* for "she":  <<SetPronouns "f">> */
+/* for "it":   <<SetPronouns "n">>*/
+	<<switch $args[0]>>
+		<<case "f">>
+			<<set $they = "she">>
+			<<set $them = "her">>
+			<<set $themself = "herself">>
+			<<set $themselves = "themselves">>
+			<<set $their = "her">>
+			<<set $theirs = "hers">>
+			<<set $theyre = "she's">>
+			<<set $are = "is">>
+			<<set $were = "was">>
+			<<set $youngPerson = "girl">>
+			<<set $youngPeople = "girls">>
+			<<set $adultPerson = "woman">>
+			<<set $adultPeople = "women">>
+			<<set $generalPerson = "girl">>
+			<<set $generalPeople = "girls">>
+			<<set $pal = "chick">>
+			<<set $pals = "chicks">>
+			<<set $They = "She">>
+			<<set $Them = "Her">>
+			<<set $Themself = "Herself">>
+			<<set $Themselves = "Themselves">>
+			<<set $Their = "Her">>
+			<<set $Theirs = "Hers">>
+			<<set $Theyre = "She's">>
+			<<set $YoungPerson = "Girl">>
+			<<set $YoungPeople = "Girls">>
+			<<set $AdultPerson = "Woman">>
+			<<set $AdultPeople = "Women">>
+			<<set $GeneralPerson = "Girl">>
+			<<set $GeneralPeople = "Girls">>
+			<<set $Pal = "Chick">>
+			<<set $Pals = "Chicks">>
+			<<set $s = "s">>
+			<<set $es = "es">>
+
+		<<case "n">>
+			<<set $they = "it">>
+			<<set $them = "it">>
+			<<set $themself = "itself">>
+			<<set $themselves = "themselves">>
+			<<set $their = "its">>
+			<<set $theirs = "its">>
+			<<set $theyre = "it's">>
+			<<set $are = "is">>
+			<<set $were = "was">>
+			<<set $youngPerson = "person">>
+			<<set $youngPeople = "people">>
+			<<set $adultPerson = "person">>
+			<<set $adultPeople = "people">>
+			<<set $generalPerson = "guy">>
+			<<set $generalPeople = "guys">>
+			<<set $pal = "pal">>
+			<<set $pals = "pals">>
+			<<set $They = "It">>
+			<<set $Them = "It">>
+			<<set $Themself = "Itself">>
+			<<set $Themselves = "Themselves">>
+			<<set $Their = "Its">>
+			<<set $Theirs = "Its">>
+			<<set $Theyre = "It's">>
+			<<set $YoungPerson = "Person">>
+			<<set $YoungPeople = "People">>
+			<<set $AdultPerson = "Person">>
+			<<set $AdultPeople = "People">>
+			<<set $GeneralPerson = "Guy">>
+			<<set $GeneralPeople = "Guys">>
+			<<set $Pal = "Pal">>
+			<<set $Pals = "Pals">>
+		<<case "m">>
+			<<set $they = "he">>
+			<<set $them = "him">>
+			<<set $themself = "himself">>
+			<<set $themselves = "themselves">>
+			<<set $their = "his">>
+			<<set $theirs = "his">>
+			<<set $theyre = "he's">>
+			<<set $are = "is">>
+			<<set $were = "was">>
+			<<set $youngPerson = "boy">>
+			<<set $youngPeople = "boys">>
+			<<set $adultPerson = "man">>
+			<<set $adultPeople = "men">>
+			<<set $generalPerson = "guy">>
+			<<set $generalPeople = "guys">>
+			<<set $pal = "dude">>
+			<<set $pals = "dudes">>
+			<<set $They = "He">>
+			<<set $Them = "Him">>
+			<<set $Themself = "Himself">>
+			<<set $Themselves = "Themselves">>
+			<<set $Their = "His">>
+			<<set $Theirs = "His">>
+			<<set $Theyre = "He's">>
+			<<set $YoungPerson = "Boy">>
+			<<set $YoungPeople = "Boys">>
+			<<set $AdultPerson = "Man">>
+			<<set $AdultPeople = "Men">>
+			<<set $GeneralPerson = "Guy">>
+			<<set $GeneralPeople = "Guys">>
+			<<set $Pal = "Dude">>
+			<<set $Pals = "Dudes">>
+			<<set $s = "s">>
+			<<set $es = "es">>
+		<<default>>
+			<<set $they = "they">>
+			<<set $them = "them">>
+			<<set $themself = "themselves">>
+			<<set $themselves = "themselves">>
+			<<set $their = "their">>
+			<<set $theirs = "theirs">>
+			<<set $theyre = "they're">>
+			<<set $are = "are">>
+			<<set $were = "were">>
+			<<set $youngPerson = "person">>
+			<<set $youngPeople = "people">>
+			<<set $adultPerson = "person">>
+			<<set $adultPeople = "people">>
+			<<set $generalPerson = "guy">>
+			<<set $generalPeople = "guys">>
+			<<set $pal = "pal">>
+			<<set $pals = "pals">>
+			<<set $They = "They">>
+			<<set $Them = "Them">>
+			<<set $Themself = "Themself">>
+			<<set $Themselves = "Themselves">>
+			<<set $Their = "Their">>
+			<<set $Theirs = "Theirs">>
+			<<set $Theyre = "They're">>
+			<<set $YoungPerson = "Person">>
+			<<set $YoungPeople = "People">>
+			<<set $AdultPerson = "Person">>
+			<<set $AdultPeople = "People">>
+			<<set $GeneralPerson = "Guy">>
+			<<set $GeneralPeople = "Guys">>
+			<<set $Pal = "Pal">>
+			<<set $Pals = "Pals">>
+			<<set $s = "">>
+			<<set $es = "">>
+	<</switch>>
+<</nobr>><</widget>>
+
+::StoryCaption
+Volume: <<volume>>
+
+<<link "Mute BGM">><<audio ":playing" mute>><</link>> | <<link "Unmute BGM">><<audio ":playing" unmute>><</link>>
+
+<img src="https://i.imgur.com/rtYmDmz.png" alt="Larger font" title="Larger font" width="30" onclick="fontSize(1)"> <img src="https://i.imgur.com/9qMmWfi.png" alt="Smaller font" title="Smaller font" width="30" onclick="fontSize(-1)">
+
+::PassageDone
+<<if $firstname eq "">><<set $firstname to "">><</if>><<if $lastname eq "">><<set $lastname to "">><</if>><<if $nickname eq "">><<set $nickname to "">><</if>><<if $age eq "">><<set $age to "">><</if>>
+
+<<if $job is "Paladin" or $job is "Warrior" or $job is "Dark Knight" or $job is "Gunbreaker">><<set $role to "tank">>
+
+<<elseif $job is "White Mage" or $job is "Scholar" or $job is "Astrologian">><<set $role to "healer">>
+
+<<elseif $job is "Monk" or $job is "Dragoon" or $job is "Ninja" or $job is "Samurai">><<set $role to "melee dps">>
+
+<<elseif $job is "Bard" or $job is "Machinist" or $job is "Dancer">><<set $role to "ranged dps">>
+
+<<elseif $job is "Black Mage" or $job is "Summoner" or $job is "Red Mage" or $job is "Blue Mage">><<set $role to "magic dps">>
+<</if>>
+
+<<if $currentzone is "Gridania">><<set $inn to "Roost">>
+<<elseif $currentzone is "Limsa Lominsa">><<set $inn to "Mizzenmast">>
+<<elseif $currentzone is "Ul'dah">><<set $inn to "Hourglass">>
+<<elseif $currentzone is "Ishgard">><<set $inn to "Cloud Nine">>
+<<elseif $currentzone is "Kugane">><<set $inn to "Bokairo">>
+<<else>><<set $inn to "the inn">>
+<</if>>
+
+<<if $currentzone is "Gridania">><<set $theinn to "the Roost">>
+<<elseif $currentzone is "Limsa Lominsa">><<set $theinn to "Mizzenmast Inn">>
+<<elseif $currentzone is "Ul'dah">><<set $theinn to "the Hourglass">>
+<<elseif $currentzone is "Ishgard">><<set $theinn to "Cloud Nine">>
+<<elseif $currentzone is "Kugane">><<set $theinn to "Bokairo Inn">>
+<<else>><<set $theinn to "the inn">>
+<</if>>
+
+<<if $currentzone is "Gridania">><<set $adventureguild to "Carline Canopy">>
+<<elseif $currentzone is "Limsa Lominsa">><<set $adventureguild to "Drowning Wench">>
+<<elseif $currentzone is "Ul'dah">><<set $adventureguild to "Quicksand">>
+<<elseif $currentzone is "Ishgard">><<set $adventureguild to "Forgotten Knight">>
+<<elseif $currentzone is "Kugane">><<set $adventureguild to "Rakuza District">>
+<<else>><<set $adventureguild to "Adventurers' Guild">>
+<</if>>
+
+
+<<if $currentzone is "Gridania">><<set $agFirst to "Miounne">>
+<<elseif $currentzone is "Limsa Lominsa">><<set $agFirst to "Baderon">>
+<<elseif $currentzone is "Ul'dah">><<set $agFirst to "Momodi">>
+<<elseif $currentzone is "Ishgard">><<set $agFirst to "Austreux">>
+<<elseif $currentzone is "Kugane">><<set $agFirst to "Toshiyuki">>
+<<else>><<set $agFirst to "the Proprieter">>
+<</if>>
+
+<<if $currentzone is "Gridania">><<set $agthey to "she">>
+<<elseif $currentzone is "Limsa Lominsa">><<set $agthey to "he">>
+<<elseif $currentzone is "Ul'dah">><<set $agthey to "she">>
+<<elseif $currentzone is "Ishgard">><<set $agthey to "he">>
+<<elseif $currentzone is "Kugane">><<set $agthey to "he">>
+<<else>><<set $agthey to "they">>
+<</if>>
+
+<<if $currentzone is "Gridania">><<set $agThey to "She">>
+<<elseif $currentzone is "Limsa Lominsa">><<set $agThey to "He">>
+<<elseif $currentzone is "Ul'dah">><<set $agThey to "She">>
+<<elseif $currentzone is "Ishgard">><<set $agThey to "He">>
+<<elseif $currentzone is "Kugane">><<set $agThey to "He">>
+<<else>><<set $agThey to "They">>
+<</if>>
+
+
+<<if $music is "none">><<audio ":playing" fadeout>><</if>>
+
+<<if $currentzone is "Gridania" and $music is "" and $zonetime is "day">>
+  <<audio ":playing" fadeout>><<audio "gridania-bg" volume 0 fadeto 0.30 loop>><<set $music to "gridania">>
+<<elseif $currentzone is "Gridania" and $music is "" and $zonetime is "night">>
+  <<audio ":playing" fadeout>><<audio "gridania-bg-night" volume 0 fadeto 0.30 loop>><<set $music to "gridania night">>
+<<elseif $currentzone is "Black Shroud" and $music is "">>
+  <<audio ":playing" fadeout>><<audio "blackshroud-bg" volume 0 fadeto 0.30 loop>><<set $music to "black shroud">>
+
+<<elseif $currentzone is "Ul'dah" and $music is "" and $zonetime is "day">>
+  <<audio ":playing" fadeout>><<audio "uldah-bg" volume 0 fadeto 0.30 loop>><<set $music to "uldah">>
+  <<elseif $currentzone is "Ul'dah" and $music is "" and $zonetime is "night">>
+  <<audio ":playing" fadeout>><<audio "uldah-bg-night" volume 0 fadeto 0.30 loop>><<set $music to "uldah night">>
+<<elseif $currentzone is "Thanalan" and $music is "">>
+  <<audio ":playing" fadeout>><<audio "thanalan-bg" volume 0 fadeto 0.30 loop>><<set $music to "thanalan">>
+
+<<elseif $currentzone is "Limsa Lominsa" and $music is "" and $zonetime is "day">>
+  <<audio ":playing" fadeout>><<audio "limsa-bg" volume 0 fadeto 0.30 loop>><<set $music to "limsa">>
+<<elseif $currentzone is "Limsa Lominsa" and $music is "" and $zonetime is "night">>
+  <<audio ":playing" fadeout>><<audio "limsa-bg-night" volume 0 fadeto 0.30 loop>><<set $music to "limsa night">>
+<<elseif $currentzone is "La Noscea" and $music is "">>
+  <<audio ":playing" fadeout>><<audio "lanoscea-bg" volume 0 fadeto 0.30 loop>><<set $music to "la noscea">>
+
+
+<<elseif $currentzone is "Ishgard" and $music is "" and $zonetime is "day">>
+  <<audio ":playing" fadeout>><<audio "ishgard-bg" volume 0 fadeto 0.30 loop>><<set $music to "ishgard">>
+ <<elseif $currentzone is "Ishgard" and $music is "" and $zonetime is "night">>
+  <<audio ":playing" fadeout>><<audio "ishgard-bg-night" volume 0 fadeto 0.30 loop>><<set $music to "ishgard night">>
+<<elseif $currentzone is "Coerthas" and $music is "">>
+  <<audio ":playing" fadeout>><<audio "coerthas-bg" volume 0 fadeto 0.30 loop>><<set $music to "coerthas">>
+<<elseif $currentzone is "Dravanian Forelands" and $music is "">>
+  <<audio ":playing" fadeout>><<audio "forelands-bg" volume 0 fadeto 0.30 loop>><<set $music to "forelands">>
+<<elseif $currentzone is "Dravanian Hinterlands" and $music is "">>
+  <<audio ":playing" fadeout>><<audio "hinterlands-bg" volume 0 fadeto 0.30 loop>><<set $music to "hinterlands">>
+<<elseif $currentzone is "Sea of Clouds" and $music is "">>
+  <<audio ":playing" fadeout>><<audio "seaofclouds-bg" volume 0 fadeto 0.30 loop>><<set $music to "sea of clouds">>
+<<elseif $currentzone is "Churning Mists" and $music is "">>
+  <<audio ":playing" fadeout>><<audio "churningmists-bg" volume 0 fadeto 0.30 loop>><<set $music to "churning mists">>
+<<elseif $currentzone is "Azys Lla" and $music is "">>
+  <<audio ":playing" fadeout>><<audio "azyslla-bg" volume 0 fadeto 0.30 loop>><<set $music to "azys lla">>
+
+
+<<elseif $currentzone is "Kugane" and $music is "" and $zonetime is "day">>
+  <<audio ":playing" fadeout>><<audio "kugane-bg" volume 0 fadeto 0.30 loop>><<set $music to "kugane">>
+<<elseif $currentzone is "Kugane" and $music is "" and $zonetime is "night">>
+  <<audio ":playing" fadeout>><<audio "kugane-bg-night" volume 0 fadeto 0.30 loop>><<set $music to "kugane night">>
+<<elseif $currentzone is "Peaks" and $music is "">>
+  <<audio ":playing" fadeout>><<audio "peaks-bg" volume 0 fadeto 0.30 loop>><<set $music to "peaks">>
+<<elseif $currentzone is "Fringes" and $music is "">>
+  <<audio ":playing" fadeout>><<audio "fringes-bg" volume 0 fadeto 0.30 loop>><<set $music to "fringes">>
+<<elseif $currentzone is "Lochs" and $music is "">>
+  <<audio ":playing" fadeout>><<audio "lochs-bg" volume 0 fadeto 0.30 loop>><<set $music to "lochs">>
+<<elseif $currentzone is "Ruby Sea" and $music is "">>
+  <<audio ":playing" fadeout>><<audio "rubysea-bg" volume 0 fadeto 0.30 loop>><<set $music to "ruby sea">>
+<<elseif $currentzone is "Azim Steppe" and $music is "">>
+  <<audio ":playing" fadeout>><<audio "azimsteppe-bg" volume 0 fadeto 0.30 loop>><<set $music to "azim steppe">>
+<<elseif $currentzone is "Yanxia" and $music is "">>
+  <<audio ":playing" fadeout>><<audio "yanxia-bg" volume 0 fadeto 0.30 loop>><<set $music to "yanxia">>
+
+
+<<elseif $currentzone is "Crystarium" and $music is "" and $zonetime is "day">>
+  <<audio ":playing" fadeout>><<audio "crystarium-bg" volume 0 fadeto 0.30 loop>><<set $music to "crystarium">>
+<<elseif $currentzone is "Crystarium" and $music is "" and $zonetime is "night">>
+  <<audio ":playing" fadeout>><<audio "crystarium-bg-night" volume 0 fadeto 0.30 loop>><<set $music to "crystarium night">>
+<<elseif $currentzone is "Eulmore" and $music is "">>
+  <<audio ":playing" fadeout>><<audio "eulmore-bg" volume 0 fadeto 0.30 loop>><<set $music to "eulmore">>
+<<elseif $currentzone is "Lakeland" and $music is "">>
+  <<audio ":playing" fadeout>><<audio "lakeland-bg" volume 0 fadeto 0.30 loop>><<set $music to "lakeland">>
+<<elseif $currentzone is "Amh Araeng" and $music is "">>
+  <<audio ":playing" fadeout>><<audio "amharaeng-bg" volume 0 fadeto 0.30 loop>><<set $music to "amh araeng">>
+<<elseif $currentzone is "Il Mheg" and $music is "">>
+  <<audio ":playing" fadeout>><<audio "ilmheg-bg" volume 0 fadeto 0.30 loop>><<set $music to "il mheg">>
+<<elseif $currentzone is "Kholusia" and $music is "">>
+  <<audio ":playing" fadeout>><<audio "Kholusia-bg" volume 0 fadeto 0.30 loop>><<set $music to "kholusia">>
+<<elseif $currentzone is "Rak'tika" and $music is "">>
+  <<audio ":playing" fadeout>><<audio "raktika-bg" volume 0 fadeto 0.30 loop>><<set $music to "raktika">>
+<<elseif $currentzone is "Rak'tika Town" and $music is "">>
+  <<audio ":playing" fadeout>><<audio "raktika-town-bg" volume 0 fadeto 0.30 loop>><<set $music to "raktika town">>
+<<elseif $currentzone is "Tempest" and $music is "">>
+  <<audio ":playing" fadeout>><<audio "tempest-bg" volume 0 fadeto 0.30 loop>><<set $music to "tempest">>
+<<elseif $currentzone is "Amaurot" and $music is "">>
+  <<audio ":playing" fadeout>><<audio "amaurot-bg" volume 0 fadeto 0.30 loop>><<set $music to "amaurot">>
+<<else>>
+<</if>>
+
+<<if $currentzone is "Gridania">>
+<<addclass "body" "gridania">>
+<<elseif $currentzone is "Black Shroud">>
+<<addclass "body" "gridania">>
+<<elseif $currentzone is "Ul'dah">>
+<<addclass "body" "uldah">>
+<<elseif $currentzone is "Thanalan">>
+<<addclass "body" "uldah">>
+<<elseif $currentzone is "Limsa Lominsa">>
+<<addclass "body" "limsa">>
+<<elseif $currentzone is "La Noscea">>
+<<addclass "body" "lanoscea">>
+
+<<elseif $currentzone is "Ishgard">>
+<<addclass "body" "ishgard">>
+<<elseif $currentzone is "Coerthas">>
+<<addclass "body" "ishgard">>
+<<elseif $currentzone is "Dravanian Forelands">>
+<<addclass "body" "dravanian">>
+<<elseif $currentzone is "Dravanian Highlands">>
+<<addclass "body" "dravanian">>
+<<elseif $currentzone is "Churning Mists">>
+<<addclass "body" "ishgard">>
+<<elseif $currentzone is "Sea of Clouds">>
+<<addclass "body" "seaofclouds">>
+<<elseif $currentzone is "Azys Lla">>
+<<addclass "body" "ishgard">>
+
+<<elseif $currentzone is "Kugane">>
+<<addclass "body" "kugane">>
+<<elseif $currentzone is "Peaks">>
+<<addclass "body" "gyrabania">>
+<<elseif $currentzone is "Fringes">>
+<<addclass "body" "gyrabania">>
+<<elseif $currentzone is "Lochs">>
+<<addclass "body" "gyrabania">>
+<<elseif $currentzone is "Ruby Sea">>
+<<addclass "body" "othard">>
+<<elseif $currentzone is "Azim Steppe">>
+<<addclass "body" "othard">>
+<<elseif $currentzone is "Yanxia">>
+<<addclass "body" "othard">>
+
+<<elseif $currentzone is "Crystarium">>
+<<addclass "body" "crystarium">>
+<<elseif $currentzone is "Lakeland">>
+<<addclass "body" "lakeland">>
+<<elseif $currentzone is "Amh Araeng">>
+<<addclass "body" "amharaeng">>
+<<elseif $currentzone is "Il Mheg">>
+<<addclass "body" "ilmheg">>
+<<elseif $currentzone is "Kholusia">>
+<<addclass "body" "kholusia">>
+<<elseif $currentzone is "Eulmore">>
+<<addclass "body" "eulmore">>
+<<elseif $currentzone is "Rak'tika">>
+<<addclass "body" "raktika">>
+<<elseif $currentzone is "Rak'tika Town">>
+<<addclass "body" "raktika">>
+<<elseif $currentzone is "Tempest">>
+<<addclass "body" "amaurot">>
+<<elseif $currentzone is "Amaurot">>
+<<addclass "body" "amaurot">>
+<<else>>
+<</if>>
+
+<<if $zonetime is "night">>
+<<addclass "body" "night">>
+<</if>>
+
+::PassageReady
+<<if $job is "Paladin" or $job is "Warrior" or $job is "Dark Knight" or $job is "Gunbreaker">><<set $role to "tank">>
+
+<<elseif $job is "White Mage" or $job is "Scholar" or $job is "Astrologian">><<set $role to "healer">>
+
+<<elseif $job is "Monk" or $job is "Dragoon" or $job is "Ninja" or $job is "Samurai">><<set $role to "melee dps">>
+
+<<elseif $job is "Bard" or $job is "Machinist" or $job is "Dancer">><<set $role to "ranged dps">>
+
+<<elseif $job is "Black Mage" or $job is "Summoner" or $job is "Red Mage" or $job is "Blue Mage">><<set $role to "magic dps">>
+<</if>>
+
+<<if $currentzone is "Gridania">><<set $inn to "Roost">>
+<<elseif $currentzone is "Limsa Lominsa">><<set $inn to "Mizzenmast">>
+<<elseif $currentzone is "Ul'dah">><<set $inn to "Hourglass">>
+<<elseif $currentzone is "Ishgard">><<set $inn to "Cloud Nine">>
+<<elseif $currentzone is "Kugane">><<set $inn to "Bokairo">>
+<<else>><<set $inn to "the inn">>
+<</if>>
+
+<<if $currentzone is "Gridania">><<set $theinn to "the Roost">>
+<<elseif $currentzone is "Limsa Lominsa">><<set $theinn to "Mizzenmast Inn">>
+<<elseif $currentzone is "Ul'dah">><<set $theinn to "the Hourglass">>
+<<elseif $currentzone is "Ishgard">><<set $theinn to "Cloud Nine">>
+<<elseif $currentzone is "Kugane">><<set $theinn to "Bokairo Inn">>
+<<else>><<set $theinn to "the inn">>
+<</if>>
+
+<<if $currentzone is "Gridania">><<set $adventureguild to "Carline Canopy">>
+<<elseif $currentzone is "Limsa Lominsa">><<set $adventureguild to "Drowning Wench">>
+<<elseif $currentzone is "Ul'dah">><<set $adventureguild to "Quicksand">>
+<<elseif $currentzone is "Ishgard">><<set $adventureguild to "Forgotten Knight">>
+<<elseif $currentzone is "Kugane">><<set $adventureguild to "Rakuza District">>
+<<else>><<set $adventureguild to "Adventurers' Guild">>
+<</if>>
+
+
+<<if $currentzone is "Gridania">><<set $agFirst to "Miounne">>
+<<elseif $currentzone is "Limsa Lominsa">><<set $agFirst to "Baderon">>
+<<elseif $currentzone is "Ul'dah">><<set $agFirst to "Momodi">>
+<<elseif $currentzone is "Ishgard">><<set $agFirst to "Austreux">>
+<<elseif $currentzone is "Kugane">><<set $agFirst to "Toshiyuki">>
+<<else>><<set $agFirst to "the Proprieter">>
+<</if>>
+
+<<if $currentzone is "Gridania">><<set $agthey to "she">>
+<<elseif $currentzone is "Limsa Lominsa">><<set $agthey to "he">>
+<<elseif $currentzone is "Ul'dah">><<set $agthey to "she">>
+<<elseif $currentzone is "Ishgard">><<set $agthey to "he">>
+<<elseif $currentzone is "Kugane">><<set $agthey to "he">>
+<<else>><<set $agthey to "they">>
+<</if>>
+
+<<if $currentzone is "Gridania">><<set $agThey to "She">>
+<<elseif $currentzone is "Limsa Lominsa">><<set $agThey to "He">>
+<<elseif $currentzone is "Ul'dah">><<set $agThey to "She">>
+<<elseif $currentzone is "Ishgard">><<set $agThey to "He">>
+<<elseif $currentzone is "Kugane">><<set $agThey to "He">>
+<<else>><<set $agThey to "They">>
+<</if>>

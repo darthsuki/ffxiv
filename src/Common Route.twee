@@ -1,0 +1,74 @@
+::Begin Game
+You breathe in slowly upon entering the threshold of the inn room, thoughts just sharp enough to notice how empty $theinn seems to be on this evening. Though you hardly expect it to be bustling on a non-holiday, the curiosity nevertheless lingers in your thoughts from the moment you entered the building--as well as a sense of genuine relief.
+
+It's quite nice to have a little break from the activity of what's become your day-to-day life. For all the great deeds accomplished by the Warrior of Light, it's still a blessing to enjoy even a single evening without a stranger hustling you for stories or advice<<if $currentzone is "None">>.<<else>> - even $agFirst, proprieter of $theinn, has had to step in on occasion when things got chaotic and you simply felt too tired to play your part.<</if>>
+
+Because you're //exhausted// now. The last couple outings have left you running on empty for longer than you'd like, so much that you even wondered if you'd ever find the comfort of a soft bed and warm food ever again.
+
+[[Look around the room.]]
+
+::Look around the room.
+It is a rather welcoming sight for sore eyes<<if $currentzone is "Ishgard">> if although a little run-down - Ishgard still had many months, if not years, before they'd fully recover from the war only recently ended.<<else>> and as well-kept as ever.<</if>> The bed looks particularly inviting, all but commanding your attention from the get-go. With plush pillows and a thick comforter laid upon the mattress, you feel even more tired from just a glance. It sure beats having to make yourself comfortable on a bedroll or hard ground beneath the open sky.
+
+Even still, a sense of hunger gnaws lightly at your stomach. It brings to mind memories of all the food served out in the main section of the inn--and how delicious most of the options sound right about now.
+
+When was the last time you ate a hot meal anyway?
+
+Memories feel a bit muddled, tugged and twisted into unrecognizable ribbons from the countless days of busybody work that the Scions have sent you on. Though you're certain that there'd be food available after a quick nap (or even a full night of sleep and thensome) you can't entirely ignore the way your stomach seems to jump at the mere reminder of food - even if you are liable to fall asleep in the middle of eating it.
+
+[[Get some sleep.]]
+
+[[Get something to eat.]]
+
+::Get something to eat.
+As tempting as sleep sounds, you know how important it is to stay fed--especially when you can't even remember the last time you had a proper meal. It luckily only takes you a few minutes to set all of your gear down onto the bed with the intention to take proper stock later, ideally after taking care of yourself enough to be coherent again.
+
+It's not more than a few hallways from there back to the front of the building, where the bar is serving both food and drink alike. There's few people milling about, and luckily for you none seem to recognize your face, or they simply know well enough to offer you some reprieve.
+
+[[Take a seat at the bar.]]
+
+[[Sit at one of the empty tables.]]
+
+::Take a seat at the bar.
+It doesn't take you long for you to take one of many empty seats at the bar, nor does it take long for the barkeep to catch sight of you settling down, and side-steps close enough so that you glance up at them in kind. Words fall messily from your thoughts to your lips; they are tired and drawing off of several sleepless nights.
+
+"Anything that you might reccomend?"
+
+"Food would be a good place to start," they jest lightly with shrug of the shoulders. "It looks like you're being kept pretty busy, $firstname."
+
+"You don't know the half of it."
+
+The two of you share a few moments of gentle conversation, mostly checking on how things have been in the local area, but the heavy growl of your stomach quickly brings the topic back into check.
+
+"We have a couple specialties tonight," the server says warmly, a hint of pride even in their smile. "There's a fresh pot of [[antelope stew]], our from-scratch [[cheese risotto]], and even [[stuffed chysahl]]."
+
+::Sit at one of the empty tables.
+It doesn't take you long for you to take a seat at one of the many empty tables. It doesn't take too long after that for the barkeep to catch sight of you, and steps over with a curious gaze which told you well enough that they wanted to know if you needed anything. Words fall messily from your thoughts to your lips; they are tired and drawing off of several sleepless nights.
+
+"Anything that you might reccomend?"
+
+"Food would be a good place to start," they jest lightly with shrug of the shoulders. "It looks like you're being kept pretty busy, $firstname."
+
+"You don't know the half of it."
+
+The two of you share a few moments of gentle conversation, mostly checking on how things have been in the local area, but the heavy growl of your stomach quickly brings the topic back into check.
+
+"We have a couple specialties tonight," the server says warmly, a hint of pride even in their smile. "There's a fresh pot of [[antelope stew]], our from-scratch [[cheese risotto]], and even [[stuffed chysahl]]."
+
+::antelope stew
+[[Get some sleep.]]
+
+::cheese risotto
+[[Get some sleep.]]
+
+::stuffed chysahl
+[[Get some sleep.]]
+
+::Get some sleep.
+<<if visited("Get something to eat.")>> Now with some food in your belly, there is absolutely no avoiding the temptation of sleep that's been all but tugging every thought back towards your room and the soft and welcoming bed within. <<else>>For all the gentle discomfort that plagues your stomach, the promise of such a soft and warm slumber wins your favor with ease.<</if>>
+
+You're already half-asleep by the time that you fall into bed, and completely so by the time your head hits the pillows. There is simply no winning out against the exhaustion gnawing at your bones. Though the darkness embracing you is without dream or nightmare, it's certainly rejuvinating nonetheless. A momentary lapse of attention away from a world that seems to be beseiged by one enemy after another and you the only person able to combat it.
+
+[[Fall aleep. | Hildebrand]]
+
+::Hildebrand
